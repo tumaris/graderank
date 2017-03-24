@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif|Yanone+Kaffeesatz');
+@import url('https://fonts.googleapis.com/css?family=PT+Serif');
+
+.typewriter h1{
+	font-family: 'Noto Serif', serif;
+	color: #424949;
+	font-size: 60px;
+	text-align: center;
+	width: 66%;
+	overflow: hidden; /*ensure content stays hidden*/
+	border-right: .11em solid white; /*cursor*/
+	white-space: nowrap;  /*keeps content on single line*/
+	margin: 0 auto; /*give scrolling effect */
+	letter-spacing: 0em;
+	animation:
+		typing 2.5s steps(40, end),
+		blink-caret .75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 66% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #424949; }
+} /*Source: css-tricks.com*/
+
+h2{
+	font-family: 'PT Serif', serif;
+	margin-left: 15%;
+	margin-right: 15%;
+	font-size: 40px;
+	color: #2C3E50;
+	margin-top: 40px;
+}
+
+h3{
+	border: 2px white solid;
+}
+
+h4{
+	font-family: 'PT Serif', serif;
+	margin-left: 18%;
+	margin-right: 18%;
+	margin-top: 20px;
+	text-align: center;
+	color: #626567;
+	font-size: 18px;
+	line-height: 20px;
+
+}
+
+p{
+	font-family: 'PT Serif', serif;
+	margin-left: 15%;
+	margin-right: 15%;
+	color: #808B96;
+	font-size: 15px;
+	line-height: 25px;
+	text-indent: 50px;
+
+}
+
+
+#bodyimg{
+	background-image:
+	 url(http://hdqwalls.com/wallpapers/minimalist-mountains-black-and-white-ap.jpg);
+	background-size: cover;
+	background-position: center center;
+	position: relative;
+	height: 700px;
+}
+
+#bodyimg-overlay{
+	position: absolute;
+	margin-top: 80px;
+	height: 100%;
+	width: 100%;
+}
+
+#A{
+	padding-top: 20px;
+	padding-left: 30px;
+	height: 70px;
+
+}
+
+#A button{
+	background: none;
+	box-shadow: none;
+	border: none;
+	font-family: 'PT Serif', serif;
+	font-size: 15px;
+
+}
+
+a{
+	color: #424949;
+}
+
+#space{
+	margin-left: 800px;
+}
+
+
+.btn-mod{
+	color: #424949;
+	background: transparent;
+	border: 2px solid #424949;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-top: 18px;
+	font-size: 25px;
+	font-family: 'PT Serif', serif;
+	-webkit-transition-duration: 0.3s;
+}
+
+.btn-mod:hover{
+	background-color: #424949;
+	color: white;
+	-webkit-transform: scale(1.1);
+}
+
+#content{
+	position: relative;
+	height: 1000px;
+}
+
+
+#flex-display{
+	display: flex;
+	margin-left: 10%;
+}
+
+#howdoesitwork{
+	width: 500px;
+}
+
+#howdoesitworkimage{
+	width: 500px;
+	padding-top: 20px;
+
+}
+#howdoesitworkimage p{
+	line-height: 10px;
+	color: black;
+	text-align: right;
+}
+
+
+#footer{
+	background: black;
+	height: 120px;
+	opacity: 0.8;
+}
+
+.pfooter{
+	font-family: 'PT Serif', sans-serif;
+	font-size: 15px;
+	color: white;
+	text-align: right;
+	padding-top: 10px;
+	margin-right: 6%;
+}
+
+
+.iconcolor{
+	color: white;
+	padding-left: 15px;
+}
+
+
+/*
+.smallbtn-mod{
+	float: right;
+	color: #424949;
+	font-family:'PT Serif', serif;
+	font-size: 16px;
+	background: transparent;
+	border: none;
+	padding-top: 20px;
+	padding-left: 10px;
+	padding-right: 20px;
+}
+
+.smallbtn-mod:hover{
+	text-decoration: underline;
+}*/
