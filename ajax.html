@@ -1,1 +1,12 @@
 <h1> Just a testing ground for AJAX call </h1>
+<script>
+
+var api = "https://api.myjson.com/bins/7i2h7";
+var request = new XMLHttpRequest();
+request.open('GET', api);
+request.onload = function(){
+console.log(request.responseText);
+}
+request.send();
+
+</script>
