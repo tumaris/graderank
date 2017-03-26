@@ -131,12 +131,6 @@
       }
     }
 
-    //Calculating class average and display it
-    classavg = classavg / count;
-    classavg = Math.round(classavg * 100) / 100;
-    var averageText = "<h4>" + "Average: " + "<b>" + classavg + "/4.00 </b><br>Sample Size: <b>" + count +  " users</b> <br> Passing rate: <b> 75% </b></h4>";
-    jsondisplay.insertAdjacentHTML('beforeend', averageText);
-
     //Store class grade to pie chart
     var a = 0;
     var b = 0;
@@ -148,9 +142,19 @@
       if (arr[j] > 2.6 && arr[j] < 3.6) b++;
       if (arr[j] > 1.6 && arr[j] < 2.6 ) c++;
       if (arr[j] > 0 && arr[j] < 1.6) d++;
-      if (arr[j] <= 0) f++; 
+      if (arr[j] <= 0) f++;
     }
     displayPieChart(a,b,c,d,f);
+
+
+    //Calculating class average and display it
+    classavg = classavg / count;
+    classavg = Math.round(classavg * 100) / 100;
+    var passingrate = (a + b + c) / count * 100;
+    var averageText = "<h4>" + "Average: " + "<b>" + classavg + "/4.00 </b><br>Sample Size: <b>" + count +
+    " users</b> <br> Passing rate: <b>" + passingrate + "%</b></h4>";
+    jsondisplay.insertAdjacentHTML('beforeend', averageText);
+
   }
 
   request.send();
