@@ -59,14 +59,18 @@ function changeHover(hover, nonhover){
     //Calculating class average and display it
     classavg = Math.round(classavg / count * 100) / 100;
     var passingrate = Math.round((a + b + c) / count * 100);
-    var lettergrade;
 
     //Calculating class letter grade
-    if (classavg > 3.6) lettergrade = "A";
-    if (classavg > 2.6 && classavg < 3.6) lettergrade = "B";
-    if (classavg > 1.6 && classavg < 2.6) lettergrade = "C";
-    if (classavg > 0 && classavg < 1.6) lettergrade = "D";
-    if (classavg <= 0) lettergrade = "F";
+		var lettergrade;
+		var letterarr = [a,b,c,d,f];
+		var max = Math.max(a,b,c,d,f);
+		if (max == a) lettergrade = "A";
+		if (max == b) lettergrade = "B";
+		if (max == c) lettergrade = "C";
+		if (max == d) lettergrade = "D";
+		if (max == f) lettergrade = "F"; 
+
+
 
     //Assign class label and change accent color
     var classLabel;
