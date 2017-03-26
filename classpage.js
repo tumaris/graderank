@@ -12,8 +12,12 @@
   var count = 0;
   var arr = []; //store all grade
 
-  //Pulling data from internal json
+  //Get id of stuff
   var jsondisplay = document.getElementById("jsondisplay");
+  var reviewbtn = document.getElementById("review");
+  var saveclassbtn = document.getElementById("saveclass");
+
+  //Pulling JSON data from internal file
   var request = new XMLHttpRequest();
   request.open('GET', 'file.php', true);
   request.onload = function()
@@ -41,7 +45,6 @@
       if (arr[j] > 0 && arr[j] < 1.6) d++;
       if (arr[j] <= 0) f++;
     }
-    displayPieChart(a,b,c,d,f);
 
 
     //Calculating class average and display it
@@ -56,20 +59,53 @@
     if (classavg > 0 && classavg < 1.6) lettergrade = "D";
     if (classavg <= 0) lettergrade = "F";
 
-    //Assign class label
+    //Assign class label and change accent color
     var classLabel;
+    var c1,c2,c3,c4,h1,h2,h3,h4;
     if (classavg > 3.60){
       classLabel = "Easy";
       jsondisplay.style.color = " #117864";
+      c1 = "#117864";
+			c2 = "#48C9B0";
+      c3 = "#A3E4D7";
+		  c4 = "#D1F2EB";
+      h1 = "#0E6655";
+		  h2 = "#1ABC9C";
+		  h3 = "#76D7C4";
+		  h4 = "#A3E4D7";
+      reviewbtn.style.background = "#48C9B0";
+      saveclassbtn.style.background = "#48C9B0";
     }
     else if (classavg > 2.60){
       classLabel = "Medium";
       jsondisplay.style.color = "#B7950B";
+      c1 = "#9C640C";
+      c2 ="#D4AC0D";
+      c3 = "#F4D03F";
+      c4 = "#FCF3CF";
+      h1 = "#7E5109";
+      h2 = "#B7950B";
+      h3 = "##F1C40F";
+      h4 = "##F9E79F";
+      reviewbtn.style.background = "#D4AC0D";
+      saveclassbtn.style.background = "#D4AC0D";
     }
     else if (classavg > 0){
       classLabel = "Hard";
       jsondisplay.style.color = "#922B21";
+      c1 = "#7B241C";
+      c2 = "#C0392B";
+      c3 = "#EC7063";
+      c4 = "#F5B7B1";
+      h1 = "#78281F";
+      h2 = "#B03A2E";
+      h3 = "#C0392B";
+      h4 = "#F1948A";
+      reviewbtn.style.background = "#C0392B";
+      saveclassbtn.style.background = "#C0392B";
+      reviewbtn.style.
     }
+    displayPieChart(a,b,c,d,f,c1,c2,c3,c4,h1,h2,h3,h4);
 
     //display Text
     var averageText = "<h4>" + "Average: " + "<b>" + classavg + "/4.00 </b><br>Most students receive <b>" + lettergrade + "</b><br>Passing rate: <b>" + passingrate +
@@ -87,9 +123,8 @@
   //--------------------------- DISPLAYING PIE CHART -----------------------------
 
 
-
 //Piechart thingy
-function displayPieChart(a,b,c,d,f)
+function displayPieChart(a,b,c,d,f,c1,c2,c3,c4,h1,h2,h3,h4)
 {
   Chart.defaults.global.defaultFontFamily = "Roboto Condensed";
   Chart.defaults.global.defaultFontSize = 14;
@@ -113,17 +148,17 @@ function displayPieChart(a,b,c,d,f)
         {
           data: [a,b,c,d,f],
           backgroundColor: [
-            "#117864",
-            "#48C9B0",
-            "#A3E4D7",
-            "#D1F2EB",
-                "#E5E8E8"
+            c1,
+            c2,
+            c3,
+            c4,
+            "#E5E8E8"
             ],
             hoverBackgroundColor: [
-                "#0E6655",
-                "#1ABC9C",
-                "#76D7C4",
-                "#A3E4D7",
+                h1,
+                h2,
+                h3,
+                h4,
                 "#E5E7E9"
             ]
         }],
