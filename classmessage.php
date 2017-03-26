@@ -27,10 +27,12 @@
     $result =  mysqli_query($conn, $sql);
 
     while($row = $result->fetch_assoc()){
-      echo "<div class='commentbox'>";
-        echo $row['date']."<br>";
-        echo $row['message'];
+      echo "<div id='D2'>";
+      echo "<div id='commentbox'>";
+        echo '<b>Date posted: </b>'. $row['date']."<br>";
+        echo '<b> Review: </b>' . $row['message'];
       echo "</div>";
+      echo "</div>"; 
 
     }
   }
