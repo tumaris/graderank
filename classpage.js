@@ -1,8 +1,16 @@
 
   //----------------------------- SHOW AND HIDE REVIEW BOX -----------------------------
+
 		$('#review').click(function(){
 			$('#target').toggle('slow');
 		});
+//---------------------------- HOVER FUNCTION --------------------------------------------
+function changeHover(hover, nonhover){
+    $("#review, #saveclass").hover(function(){
+    $(this).css("background-color", hover);
+    }, function(){
+    $(this).css("background-color", nonhover);
+})};
 
 
   //---------------------------  JSON STUFF ---------------------------------------------
@@ -75,6 +83,7 @@
 		  h4 = "#A3E4D7";
       reviewbtn.style.background = "#48C9B0";
       saveclassbtn.style.background = "#48C9B0";
+      changeHover(c1,c2);
     }
     else if (classavg > 2.60){
       classLabel = "Medium";
@@ -89,6 +98,7 @@
       h4 = "##F9E79F";
       reviewbtn.style.background = "#D4AC0D";
       saveclassbtn.style.background = "#D4AC0D";
+      changeHover(c1,c2);
     }
     else if (classavg > 0){
       classLabel = "Hard";
@@ -103,7 +113,7 @@
       h4 = "#F1948A";
       reviewbtn.style.background = "#C0392B";
       saveclassbtn.style.background = "#C0392B";
-      reviewbtn.style.
+      changeHover(c1,c2);
     }
     displayPieChart(a,b,c,d,f,c1,c2,c3,c4,h1,h2,h3,h4);
 
