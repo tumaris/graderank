@@ -1,12 +1,8 @@
-<body>
-  <h1> Just a testing ground for AJAX call </h1>
-</body>
-
+<h1> Just a testing ground for AJAX call </h1>
 <script>
-
-var api = "https://api.myjson.com/bins/7i2h7";
+//var api = "https://api.myjson.com/bins/7i2h7";
 var request = new XMLHttpRequest();
-request.open('GET', api);
+request.open('GET', 'file.php', true);
 request.onload = function(){
   var data = JSON.parse(request.responseText);
   var total = 0;
@@ -14,9 +10,8 @@ request.onload = function(){
     total += parseInt(data[i].grade);
   }
   var average = total / data.length;
+  average = Math.round(average* 100) / 100
   alert("Class average: " + average);
-
 }
 request.send();
-
 </script>
