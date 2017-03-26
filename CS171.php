@@ -110,7 +110,7 @@
   //Create some global variables to be use
 
   var classavg = 0;
-  var arr = [];
+  var arr = []; //store all grade
 
   //Pulling data from internal json
   var jsondisplay = document.getElementById("jsondisplay");
@@ -148,12 +148,19 @@
 
 
     //Calculating class average and display it
-    classavg = classavg / count;
-    classavg = Math.round(classavg * 100) / 100;
-    var passingrate = (a + b + c) / count * 100;
-    var averageText = "<h4>" + "Average: " + "<b>" + classavg + "/4.00 </b><br>Sample Size: <b>" + count +
-    " users</b> <br> Passing rate: <b>" + passingrate + "%</b></h4>";
+    classavg = Math.round(classavg / count * 100) / 100;
+    var passingrate = Math.round((a + b + c) / count * 100);
+    var lettergrade;
+    if (classavg > 3.6) lettergrade = "A";
+    if (classavg > 2.6 && classavg < 3.6) lettergrade = "B";
+    if (classavg > 1.6 && classavg < 2.6) lettergrade = "C";
+    if (classavg > 0 && classavg < 1.6) lettergrade = "D";
+    if (classavg <= 0) lettergrade = "F";
+    var averageText = "<h4>" + "Average: " + "<b>" + classavg + "/4.00 </b><br>Most students receive <b>" + lettergrade + "</b><br>Passing rate: <b>" + passingrate +
+    " %</b> <br> Sample Size: <b>" + count + " users</b></h4>";
     jsondisplay.insertAdjacentHTML('beforeend', averageText);
+
+
 
   }
 
