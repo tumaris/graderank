@@ -110,6 +110,7 @@
   //Create some global variables to be use
 
   var classavg = 0;
+  var count = 0;
   var arr = []; //store all grade
 
   //Pulling data from internal json
@@ -119,9 +120,6 @@
   request.onload = function()
   {
     var data = JSON.parse(request.responseText);
-    var count = 0;
-
-    //Looping through JSON data and do stuff
     for (var i = 0; i < data.length; i++)
     {
       if (data[i].class == "CS 171"){
@@ -151,11 +149,15 @@
     classavg = Math.round(classavg / count * 100) / 100;
     var passingrate = Math.round((a + b + c) / count * 100);
     var lettergrade;
+
+    //Calculating class letter grade
     if (classavg > 3.6) lettergrade = "A";
     if (classavg > 2.6 && classavg < 3.6) lettergrade = "B";
     if (classavg > 1.6 && classavg < 2.6) lettergrade = "C";
     if (classavg > 0 && classavg < 1.6) lettergrade = "D";
     if (classavg <= 0) lettergrade = "F";
+
+    //Display text
     var averageText = "<h4>" + "Average: " + "<b>" + classavg + "/4.00 </b><br>Most students receive <b>" + lettergrade + "</b><br>Passing rate: <b>" + passingrate +
     " %</b> <br> Sample Size: <b>" + count + " users</b></h4>";
     jsondisplay.insertAdjacentHTML('beforeend', averageText);
@@ -186,11 +188,11 @@ function displayPieChart(a,b,c,d,f)
 
   var doughnutdata={
     labels: [
-            "60% of users get A",
-            "20% of users get B",
-            "15% of users get C",
-            "3% of users get D",
-            "2% of users get F"
+            Math.round(a / count*100) + "% of users get A",
+            Math.round(b / count*100) + "% of users get B",
+            Math.round(c / count*100) + "% of users get C",
+            Math.round(d / count*100) + "% of users get D",
+            Math.round(f / count*100) + "% of users get F"
     ],
     datasets: [
         {
