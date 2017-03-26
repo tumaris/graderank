@@ -45,11 +45,7 @@
 	<div id="B">
 		<div id="B1">
 			<div id="easy">
-				<h3> EASY </h3>
-				<h4> Average: <b>3.33/4.00</b><br>
-				Most student got an <b>A</b><br>
-				Passing rate: <b>95%</b><br>
-				Sample size: <b> 35 users </b> </h4>
+				<h3 id="jsondisplay"> EASY </h3>
 			</div>
 			<canvas id="canvas1" width="450" height="360"></canvas>
 		</div>
@@ -109,6 +105,7 @@
 <script>
 	Chart.defaults.global.defaultFontFamily = "Roboto Condensed";
 	Chart.defaults.global.defaultFontSize = 14;
+  var cs171 = 0;
 	var doughnut = $('#canvas1');
 	var doughnutoptions = {
 		maintainAspectRatio: false,
@@ -127,7 +124,7 @@
 		],
 		datasets: [
 		    {
-		    	data: [120, 40, 30, 6, 4],
+		    	data: [120, 40, 30, 6, cs171],
 		    	backgroundColor: [
 				    "#117864",
 				    "#48C9B0",
@@ -158,12 +155,11 @@
 	</script>
 
   <script>
-  //var api = "https://api.myjson.com/bins/7i2h7";
+  var jsondisplay = document.getElementById("jsondisplay");
   var request = new XMLHttpRequest();
   request.open('GET', 'file.php', true);
   request.onload = function(){
     var data = JSON.parse(request.responseText);
-    var cs171 = 0;
     var count = 0;
     for (var i = 0; i < data.length; i++){
       if (data[i].class == "CS 171"){
@@ -173,7 +169,9 @@
     }
     cs171 = cs171 / count;
     cs171 = Math.round(cs171 * 100) / 100;
-    alert("CS 171's average: " + cs171);
+    var average = "<h4>" + "Average: " + "<b>" + cs171 + "/4.00 </b><br>Sample Size: <b>" + count +  " users</b> <br> Passing rate: 75% </h4>";
+    jsondisplay.insertAdjacentHTML('beforeend', average);
+
   }
   request.send();
   </script>
