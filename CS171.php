@@ -107,99 +107,106 @@
 
 
   //---------------------------  JSON STUFF ---------------------------------------------
-  //Create some global variables to be used
-  var cs171 = 0;
-  var a = 10;
-  var b = 20;
-  var c = 0;
-  var d = 0;
-  var f = 0;
+  //Create some global variables to be use
+
+  var classavg = 0;
+  var arr = [];
 
   //Pulling data from internal json
   var jsondisplay = document.getElementById("jsondisplay");
   var request = new XMLHttpRequest();
   request.open('GET', 'file.php', true);
-  request.onload = function(){
+  request.onload = function()
+  {
     var data = JSON.parse(request.responseText);
     var count = 0;
 
     //Looping through JSON data and do stuff
-    for (var i = 0; i < data.length; i++){
+    for (var i = 0; i < data.length; i++)
+    {
       if (data[i].class == "CS 171"){
-        cs171 += parseInt(data[i].grade);
+        classavg += parseInt(data[i].grade);
         count++;
-      }
-      if (parseInt(data[i].grade) > 3.60){
-        a++;
-      }
-      else if (parseInt(data[i].grade) > 2.60){
-        b++;
-      }
-      else if (parseInt(data[i].grade) > 1.60){
-        c++;
-      }
-      else if (parseInt(data[i].grade) > 0.60){
-        d++;
-      }
-      else{
-        f++;
+        arr.push(parseInt(data[i].grade));
       }
     }
-    cs171 = cs171 / count;
-    cs171 = Math.round(cs171 * 100) / 100;
-    var average = "<h4>" + "Average: " + "<b>" + cs171 + "/4.00 </b><br>Sample Size: <b>" + count +  " users</b> <br> Passing rate: <b> 75% </b></h4>";
-    jsondisplay.insertAdjacentHTML('beforeend', average);
 
+    //Calculating class average and display it
+    classavg = classavg / count;
+    classavg = Math.round(classavg * 100) / 100;
+    var averageText = "<h4>" + "Average: " + "<b>" + classavg + "/4.00 </b><br>Sample Size: <b>" + count +  " users</b> <br> Passing rate: <b> 75% </b></h4>";
+    jsondisplay.insertAdjacentHTML('beforeend', averageText);
+
+    //Store class grade to pie chart
+    var a = 0;
+    var b = 0;
+    var c = 0;
+    var d = 0;
+    var f = 0;
+    for (var j = 0; j < arr.length; j++){
+      if (arr[j] > 3.6) a++;
+      if (arr[j] > 2.6 && arr[j] < 3.6) b++;
+      if (arr[j] > 1.6 && arr[j] < 2.6 ) c++;
+      if (arr[j] > 0 && arr[j] < 1.6) d++;
+      if (arr[j] <= 0) f++; 
+    }
+    displayPieChart(a,b,c,d,f);
   }
+
   request.send();
 
+
   //--------------------------- DISPLAYING PIE CHART -----------------------------
-Chart.defaults.global.defaultFontFamily = "Roboto Condensed";
-Chart.defaults.global.defaultFontSize = 14;
+
 
 
 //Piechart thingy
-var doughnut = $('#canvas1');
-var doughnutoptions = {
-  maintainAspectRatio: false,
-  responsive: false,
-  animateScale: true,
-  cutoutPercentage: 70
+function displayPieChart(a,b,c,d,f)
+{
+  Chart.defaults.global.defaultFontFamily = "Roboto Condensed";
+  Chart.defaults.global.defaultFontSize = 14;
+  var doughnut = $('#canvas1');
+  var doughnutoptions = {
+    maintainAspectRatio: false,
+    responsive: false,
+    animateScale: true,
+    cutoutPercentage: 70
+  }
+
+  var doughnutdata={
+    labels: [
+            "60% of users get A",
+            "20% of users get B",
+            "15% of users get C",
+            "3% of users get D",
+            "2% of users get F"
+    ],
+    datasets: [
+        {
+          data: [a,b,c,d,f],
+          backgroundColor: [
+            "#117864",
+            "#48C9B0",
+            "#A3E4D7",
+            "#D1F2EB",
+                "#E5E8E8"
+            ],
+            hoverBackgroundColor: [
+                "#0E6655",
+                "#1ABC9C",
+                "#76D7C4",
+                "#A3E4D7",
+                "#E5E7E9"
+            ]
+        }],
+  };
+
+  var mydoughtnut = new Chart(doughnut, {
+    type: "doughnut",
+    data: doughnutdata,
+    options: doughnutoptions
+  });
 }
-
-var doughnutdata={
-  labels: [
-          "60% of users get A",
-          "20% of users get B",
-          "15% of users get C",
-          "3% of users get D",
-          "2% of users get F"
-  ],
-  datasets: [
-      {
-        data: [a,b,c,d,f],
-        backgroundColor: [
-          "#117864",
-          "#48C9B0",
-          "#A3E4D7",
-          "#D1F2EB",
-              "#E5E8E8"
-          ],
-          hoverBackgroundColor: [
-              "#0E6655",
-              "#1ABC9C",
-              "#76D7C4",
-              "#A3E4D7",
-              "#E5E7E9"
-          ]
-      }],
-};
-
-var mydoughtnut = new Chart(doughnut, {
-  type: "doughnut",
-  data: doughnutdata,
-  options: doughnutoptions
-});
 
   </script>
 
