@@ -7,8 +7,9 @@ body{
     background-size: cover;
     background-position: bottom center;
     z-index: -3;
-    height: 900px;
+    height: 700px;
     background-repeat: no-repeat;
+    width: 100%;
 
 }
 
@@ -257,6 +258,53 @@ p{
     font-family: 'Roboto Condensed', sans-serif;
     height: 100px;
     margin-left: -1%;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(242, 243, 244, 0.2);
     color: white;
+}
+
+
+#commentSubmit{
+  font-family: 'Roboto Condensed', sans-serif;
+  border: none;
+  box-shadow: none;
+  margin-top: 10px;
+  margin-left: -1%;
+  padding: 10px;
+  width: 503px;
+}
+
+#commentSubmit:hover{
+  background: #424949;
+  color: white;
+}
+
+#D{
+  margin-top: 700px;
+  position: absolute;
+  background: black;
+
+}
+
+#D1{
+  position: absolute;
+  color: black;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+#D2{
+  background: black;
+  padding-left: 150px;
+  width: 125%;
+  padding-bottom: 30px; 
+}
+#commentbox{
+  background-color: rgba(248, 249, 249, 0.6);
+  padding: 20px;
+  width: 900px;
+}
+
+#reviewheader{
+  margin-top: 600px;
+  position: absolute;
+  margin-left: 150px;
 }
