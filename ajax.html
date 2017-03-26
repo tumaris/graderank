@@ -5,13 +5,17 @@ var request = new XMLHttpRequest();
 request.open('GET', 'file.php', true);
 request.onload = function(){
   var data = JSON.parse(request.responseText);
-  var total = 0;
+  var cs171 = 0;
+  var count = 0;
   for (var i = 0; i < data.length; i++){
-    total += parseInt(data[i].grade);
+    if (data[i].class == "CS 171"){
+      cs171 += parseInt(data[i].grade);
+      count++;
+    }
   }
-  var average = total / data.length;
-  average = Math.round(average* 100) / 100
-  alert("Class average: " + average);
+  cs171 = cs171 / count;
+  cs171 = Math.round(cs171 * 100) / 100; 
+  alert("CS 171's average: " + cs171);
 }
 request.send();
 </script>
