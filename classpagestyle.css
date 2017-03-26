@@ -9,7 +9,6 @@ body{
     z-index: -3;
     height: 700px;
     background-repeat: no-repeat;
-    width: 100%;
 
 }
 
@@ -294,8 +293,8 @@ p{
 #D2{
   background: black;
   padding-left: 150px;
-  width: 125%;
-  padding-bottom: 30px; 
+  padding-bottom: 30px;
+  width: 121%; 
 }
 #commentbox{
   background-color: rgba(248, 249, 249, 0.6);
