@@ -1,10 +1,11 @@
 
-  //----------------------------- SHOW AND HIDE REVIEW BOX -----------------------------
+  //------------- SHOW AND HIDE REVIEW BOX ------------
 
 		$('#review').click(function(){
 			$('#target').toggle('slow');
 		});
-//---------------------------- HOVER FUNCTION --------------------------------------------
+
+  //-------------- HOVER FUNCTION -----------------
 function changeHover(hover, nonhover){
     $("#review, #saveclass").hover(function(){
     $(this).css("background-color", hover);
@@ -13,7 +14,7 @@ function changeHover(hover, nonhover){
 })};
 
 
-  //---------------------------  JSON STUFF ---------------------------------------------
+  //--------------  JSON STUFF -----------------------
   //Create some global variables to be use
 
   var classavg = 0;
@@ -34,9 +35,9 @@ function changeHover(hover, nonhover){
     for (var i = 0; i < data.length; i++)
     {
       if (data[i].class == "CS 171"){
-        classavg += parseInt(data[i].grade);
+        classavg += parseFloat(data[i].grade);
         count++;
-        arr.push(parseInt(data[i].grade));
+        arr.push(parseFloat(data[i].grade));
       }
     }
 
@@ -48,10 +49,10 @@ function changeHover(hover, nonhover){
     var f = 0;
     for (var j = 0; j < arr.length; j++){
       if (arr[j] > 3.6) a++;
-      if (arr[j] > 2.6 && arr[j] < 3.6) b++;
-      if (arr[j] > 1.6 && arr[j] < 2.6 ) c++;
-      if (arr[j] > 0 && arr[j] < 1.6) d++;
-      if (arr[j] <= 0) f++;
+      else if (arr[j] > 2.6) b++;
+      else if (arr[j] > 1.6) c++;
+      else if (arr[j] > 0) d++;
+      else{f++};
     }
 
 
@@ -70,7 +71,7 @@ function changeHover(hover, nonhover){
     //Assign class label and change accent color
     var classLabel;
     var c1,c2,c3,c4,h1,h2,h3,h4;
-    if (classavg > 3.60){
+    if (classavg > 3.30){
       classLabel = "Easy";
       jsondisplay.style.color = " #117864";
       c1 = "#117864";
@@ -122,8 +123,6 @@ function changeHover(hover, nonhover){
     " %</b> <br> Sample Size: <b>" + count + " users</b></h4>";
     jsondisplay.insertAdjacentHTML('beforeend', classLabel);
     jsondisplay.insertAdjacentHTML('beforeend', averageText);
-
-
 
   }
 
