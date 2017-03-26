@@ -1,3 +1,8 @@
+<?php
+    include 'classmessage.php';
+?>
+<!DOCTYPE html>
+<html>
 <head>
 	<meta charset="utf-8">
  	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
@@ -44,9 +49,7 @@
 	<h1> CS 171 </h1>
 	<div id="B">
 		<div id="B1">
-			<div id="easy">
-				<h3 id="jsondisplay"> </h3>
-			</div>
+			<div id="easy"><h3 id="jsondisplay"> </h3></div>
 			<canvas id="canvas1" width="450" height="360"></canvas>
 		</div>
 	</div>
@@ -89,16 +92,39 @@
 
 		<div id="C3">
 			<button id="review"> ADD REVIEW &#x2b</button>
-			<button> SAVE CLASS &#x2605</button>
-		</div>
-		<div id="C4">
-			<div id="target" style="display: none">
-			<textarea id="C4input" placeholder="Write something here.... :)"></textarea>
+			<button id="saveclass"> SAVE CLASS &#x2605</button>
 		</div>
 
-	</div>
+    <!-- ______________________ FORM TO SUBMIT REVIEW _________________ -->
+		<div id="C4">
+			<div id="target" style="display: none">
+        <?php
+        echo
+        "<form method='POST' action='".setComments($conn)."'>
+          <input type='hidden' name='uid' value='anonymous'>
+          <input type='hidden' name='date' value='".date('Y-m-d')."'>
+          <textarea id='C4input' placeholder='Write something here :)' name='message' required></textarea><br>
+          <button name='commentSubmit' id='commentSubmit' value='submit'> Submit </button>
+        </form>";
+        ?>
+		  </div>
+    </div>
+  </div>
+  </div>
+  <div id="reviewheader">
+    <h1 style="color: #E5E7E9"> Reviews </h1>
+  </div>
+</body>
+
+    <div id="D">
+      <div id="D1">
+        <?php getComments($conn); ?>
+      </div>
+    </div>
+
+</html>
+
+
 
 
 <script type="text/javascript" src="classpage.js"></script>
-
-</body>
