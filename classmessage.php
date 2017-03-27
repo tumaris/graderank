@@ -23,7 +23,7 @@
     if ($letter == "D")$letter = 1;
     if ($letter == "F")$letter = 0;
 
-      $sql = "INSERT INTO score2(class, grade)". "VALUES ('CS171', '$letter')";
+      $sql = "INSERT INTO score2(class, grade)". "VALUES ('$class', '$letter')";
       header("Location: CS171.php");
 
       if ($conn->query($sql)===true){
