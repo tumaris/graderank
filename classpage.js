@@ -34,7 +34,7 @@ function changeHover(hover, nonhover){
     var data = JSON.parse(request.responseText);
     for (var i = 0; i < data.length; i++)
     {
-      if (data[i].class == "CS 171"){
+      if (data[i].class == className){
         classavg += parseFloat(data[i].grade);
         count++;
         arr.push(parseFloat(data[i].grade));
@@ -68,7 +68,7 @@ function changeHover(hover, nonhover){
 		if (max == b) lettergrade = "B";
 		if (max == c) lettergrade = "C";
 		if (max == d) lettergrade = "D";
-		if (max == f) lettergrade = "F"; 
+		if (max == f) lettergrade = "F";
 
 
 
@@ -77,7 +77,7 @@ function changeHover(hover, nonhover){
     var c1,c2,c3,c4,h1,h2,h3,h4;
     if (classavg > 3.30){
       classLabel = "Easy";
-      jsondisplay.style.color = " #117864";
+      jsondisplay.style.color = "#117864";
       c1 = "#117864";
 			c2 = "#48C9B0";
       c3 = "#A3E4D7";
@@ -124,7 +124,7 @@ function changeHover(hover, nonhover){
 
     //display Text
     var averageText = "<h4>" + "Average: " + "<b>" + classavg + "/4.00 </b><br>Most students receive <b>" + lettergrade + "</b><br>Passing rate: <b>" + passingrate +
-    " %</b> <br> Sample Size: <b>" + count + " users</b></h4>";
+    "%</b> <br> Sample Size: <b>" + count + " users</b></h4>";
     jsondisplay.insertAdjacentHTML('beforeend', classLabel);
     jsondisplay.insertAdjacentHTML('beforeend', averageText);
 
