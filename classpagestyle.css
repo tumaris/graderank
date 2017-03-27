@@ -294,10 +294,10 @@ p{
   background: black;
   padding-left: 150px;
   padding-bottom: 30px;
-  width: 121%; 
+  width: 121%;
 }
 #commentbox{
-  background-color: rgba(248, 249, 249, 0.6);
+  background-color: rgb(236, 240, 241);
   padding: 20px;
   width: 900px;
 }
