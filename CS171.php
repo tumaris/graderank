@@ -1,5 +1,7 @@
 <?php
+    session_start();
     include 'classmessage.php';
+    $class = "CS171"; 
 ?>
 <!DOCTYPE html>
 <html>
@@ -68,24 +70,25 @@
 
 		<button id="C1B"> HAVE YOU TAKEN THIS CLASS BEFORE? </button>
 		<div id="C2">
-			<form action="" method="post">
-				<div id="wrapper">
-					<input type="text" id= "C2input" placeholder="Enter your grade here :) Your data helps us grow!" list="classes" required />
-					<datalist id="classes">
-						<option value="A+">
-						<option value="A">
-						<option value="A-">
-						<option value="B+">
-						<option value="B">
-						<option value="B-">
-						<option value="C+">
-						<option value="C">
-						<option value="C-">
-						<option value="D+">
-						<option value="D">
-						<option value="F">
+			<form method='post' action='classmessage.php'>
+				<div id='wrapper'>
+					<input name='letter' type='text' id='C2input' list='classes'
+            placeholder='Enter your grade here :) Your data helps us grow!' required />
+					<datalist id='classes'>
+						<option value='A+'>
+						<option value='A'>
+						<option value='A-'>
+						<option value='B+'>
+						<option value='B'>
+						<option value='B-'>
+						<option value='C+'>
+						<option value='C'>
+						<option value='C-'>
+						<option value='D+'>
+						<option value='D'>
+						<option value='F'>
 					</datalist>
-					<button id="submit"> SUBMIT </button>
+					<button id='submit' name='gradeSubmit' value='gradeSubmit'> SUBMIT </button>
 				</div>
 			</form>
 		</div>
