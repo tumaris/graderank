@@ -73,12 +73,18 @@
 		</div>
 
 	</div>
-	<!-- OR -->
+
+
+		<div id="D">
+			<button id="btnSave"> SUBMIT </button>
+		</div>
+
+	<!-- OR
 	<div id="E">
 		<p> OR </p>
-	</div>
+	</div> --> 
 
-	<!-- SECOND OPTION: USER CUSTOMIZE THEIR OWN INPUT -->
+	<!-- SECOND OPTION: USER CUSTOMIZE THEIR OWN INPUT (TO BE IMPLEMENT IF WE HAVE TIME)
 	<div id="F">
 		<div id="F1">
 			<button> CHOOSE A MAJOR </button>
@@ -100,11 +106,8 @@
 			<input type="text" id="numbar" style="margin-left: 8px" placeholder="example: 3.40"/>
 		</div>
 	</div>
+-->
 
-	<!--
-	<div id="D">
-		<button id="btnSave"> SUBMIT </button>
-	</div>-->
 
 <script>
 var d;
