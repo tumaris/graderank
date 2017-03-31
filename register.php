@@ -3,7 +3,7 @@ session_start();
 $_SESSION['message'] = '';
 
 //Connecting to the mysql database accounts
-$mysqli = new mysqli('10.246.251.204', 'team13', 'graderank', 'data13');
+$mysqli = new mysqli('link', 'username', 'pwd', 'database');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 	if ($_POST['password'] == $_POST['confirmpassword']){
